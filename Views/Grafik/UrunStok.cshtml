@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "UrunStok";
+    Layout = "~/Views/Shared/_AminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Result Visualization</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                url: "@Url.Action("VisualizeUrunResult", "Grafik")",
+                success: function (result) {
+                    google.charts.load('current', {
+                        'packages': ['corechart']
+                    });
+                    google.charts.setOnLoadCallback(function () {
+                        drawChart1(result); // İlk grafik için çizim fonksiyonu
+                        drawChart2(result); // İkinci grafik için çizim fonksiyonu
+                    });
+                }
+            });
+        });
+
+        function drawChart1(result) {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Name');
+            data.addColumn('number', 'Stoklar');
+            var dataArray = [];
+            $.each(result, function (i, obj) {
+                dataArray.push([obj.urunAd, obj.stok]);
+            });
+            data.addRows(dataArray);
+            var columnChartOptions = {
+                title: "Ürün - Stok Durumu 1",
+                width: 600,
+                height: 400,
+                bar: { groupWidth: "20%" },
+            };
+            var columnChart = new google.visualization.PieChart(document.getElementById('Piechart_div1')); // İlk grafik için div
+            columnChart.draw(data, columnChartOptions);
+        }
+
+        function drawChart2(result) {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Name');
+            data.addColumn('number', 'Stoklar');
+            var dataArray = [];
+            $.each(result, function (i, obj) {
+                dataArray.push([obj.urunAd, obj.stok]);
+            });
+            data.addRows(dataArray);
+            var columnChartOptions = {
+                title: "Ürün - Stok Durumu 2",
+                width: 600,
+                height: 400,
+                bar: { groupWidth: "20%" },
+            };
+            var columnChart = new google.visualization.PieChart(document.getElementById('Piechart_div2')); // İkinci grafik için div
+            columnChart.draw(data, columnChartOptions);
+        }
+    </script>
+
+    <style>
+        .piechart-container {
+            display: flex;
+            justify-content: space-between; /* İki div'i arasında boşluk bırakır */
+        }
+    </style>
+
+</head>
+<body>
+    <div class="piechart-container">
+        <div id="Piechart_div1"></div>
+        <div id="Piechart_div2"></div>
+    </div>
+</body>
+
+</html>
+
+
+

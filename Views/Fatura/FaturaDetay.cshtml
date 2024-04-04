@@ -1,0 +1,85 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<FaturaKalem>
+@{
+    ViewBag.Title = "FaturaDetay";
+    Layout = "~/Views/Shared/_AminLayout.cshtml";
+}
+<br />
+<h2>Fatura Kalemleri Sayfası</h2>
+<br />
+@*<table class="table table-hover">
+    <tr>
+        <th>Fatura Id</th>
+        <th>Ürün</th>
+        <th>Miktar</th>
+        <th>Birim Fiyat</th>
+        <th>Tutar</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.FaturaId</td>
+            <td>@x.Aciklama</td>
+            <td>@x.Miktar</td>
+            <td>@x.BirimFiyat</td>
+            <td>@x.Tutar</td>
+        </tr>
+    }
+</table>
+<a href="/Fatura/YeniKalem/" class="btn btn-warning">Yeni Kalem Girişi</a>*@
+
+
+        <div class="panel-body">
+
+            <table class="table table-striped table-responsive">
+
+                
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <th>Açıklama</th>
+
+                                        <th>Miktar</th>
+
+                                        <th>Birim Fiyat</th>
+
+                                        <th>Toplam Fiyat</th>
+
+                                    </tr>
+
+                                    @{
+
+                                        var totalBill = 0;
+
+                                    }
+
+                                    @foreach (var order in Model)
+
+                                    {
+
+                                        <tr>
+
+                                            <td>@order.Aciklama</td>
+
+                                            <td>@order.Miktar</td>
+
+                                            <td>@order.BirimFiyat</td>
+
+                                            <td>@order.Tutar</td>
+
+                                        </tr>
+
+                                        totalBill = totalBill + Convert.ToInt32(order.Tutar);
+
+                                    }
+
+                                </tbody>
+
+                            </table>
+
+                            <span class="pull-right" style="margin-right:100px;"><strong>Toplam Fatura Tutarı :  </strong> @totalBill</span>
+
+        </div>
+

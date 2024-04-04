@@ -1,0 +1,46 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.SatisHareket
+@{
+    ViewBag.Title = "SatisYap";
+    Layout = "~/Views/Shared/_AminLayout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<br />
+<h2>SatisYap</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.UrunId)
+    <input type="text" name="UrunId" value="@ViewBag.dgr2" class="form-control" readonly />
+    <br />
+    @Html.LabelFor(x => x.PersonelId)
+    @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.CariId)
+    @Html.TextBoxFor(x => x.CariId, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Adet)
+    <input type="number" name="Adet" class="form-control" min="0" id="txt1" onchange="tutar();"/>
+    <br />
+    @Html.LabelFor(x => x.Fiyat)
+    <input type="text" name="Fiyat" value="@ViewBag.dgr3" class="form-control" id="txt2" onchange="tutar();"/>
+    <br />
+    @Html.LabelFor(x => x.Tutar)
+    <input type="text" name="Tutar" value="0" class="form-control" id="txt3" readonly/>
+    <br />
+    <button class="btn btn-primary" id="btn1">Kaydet</button>
+</form>
+<script>
+    function tutar() {
+        var sayi1 = document.getElementById('txt1').value;
+        var sayi2 = document.getElementById('txt2').value;
+        var sonuc = parseInt(sayi1) * parseInt(sayi2);
+        if (!isNaN(sonuc)) {
+            document.getElementById('txt3').value = sonuc;
+        }
+    }
+</script>
+<script>
+    $('#btn1').click(function () {
+        swal("Good job!", "Satış Gerçekleşti", "success");
+    });
+</script>

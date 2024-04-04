@@ -1,0 +1,373 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Mesajlar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AminLayout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>AdminLTE 3 | User Profile</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+
+    <!-- Ionicons -->
+
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!-- Theme style -->
+
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+
+    <!-- Google Font: Source Sans Pro -->
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <!-- Stil ayarları -->
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: transparent; /* Popup arka plan rengi şeffaf */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 9999;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <!-- /.navbar -->
+        <!-- Content Wrapper. Contains page content -->
+        <!-- Content Header (Page header) -->
+
+        <section class="content-header">
+
+            <div class="container-fluid">
+
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+
+                        <h1>Profilim</h1>
+
+                    </div>
+
+
+
+                </div>
+
+            </div><!-- /.container-fluid -->
+
+        </section>
+
+        <!-- Main content -->
+
+        <section class="content">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-md-3">
+
+                        <!-- Profile Image -->
+
+                        <div class="card card-primary card-outline">
+
+                            <div class="card-body box-profile">
+
+                                <div class="text-center">
+
+                                    <img class="profile-user-img img-fluid img-circle"
+                                         src="~/AdminLTE-3.0.4/dist/img/user8-128x128.jpg"
+                                         alt="User profile picture">
+
+                                </div>
+
+                                <h3 class="profile-username text-center">@ViewBag.adSoyad</h3>
+
+                                <p class="text-muted text-center">@ViewBag.mail</p>
+
+                                <a id="yeniDuyuruLink" class="btn btn-primary btn-block" href="#">Yeni Duyuru Yaz</a>
+
+                            </div>
+
+                            <!-- /.card-body -->
+
+                        </div>
+
+                        <!-- /.card -->
+                        <!-- About Me Box -->
+
+                        <div class="card card-primary">
+
+                            <div class="card-header">
+
+                                <h3 class="card-title">Hakkımda</h3>
+
+                            </div>
+
+                            <!-- /.card-header -->
+
+                            <div class="card-body">
+
+                                <strong><i class="fas fa-book mr-1"></i> Mail Adresi</strong>
+
+                                <p class="text-muted">@ViewBag.mail</p>
+
+                                <hr>
+
+                                <hr>
+
+
+                            </div>
+
+                            <!-- /.card-body -->
+
+                        </div>
+
+                        <!-- /.card -->
+
+                    </div>
+
+                    <!-- /.col -->
+
+                    <div class="col-md-9">
+
+                        <div class="card">
+
+                            <div class="card-header p-2">
+
+                                <ul class="nav nav-pills">
+
+                                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Gelen Kutusu</a></li>
+
+                                    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Bülten</a></li>
+
+                                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Düzenle</a></li>
+
+                                </ul>
+
+                            </div><!-- /.card-header -->
+
+                            <div class="card-body">
+
+                                <div class="tab-content">
+
+                                    <div class="active tab-pane" id="activity">
+
+                                        <!-- Post -->
+                                        @foreach (var x in Model)
+                                        {
+                                            <div class="post">
+
+                                                <div class="user-block">
+
+                                                    <img class="img-circle img-bordered-sm" src="~/AdminLTE-3.0.4/dist/img/message.png" alt="user image">
+
+                                                    <span class="username">
+
+                                                        <a href="#">@x.Gonderen</a>
+
+                                                        <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+
+                                                    </span>
+
+                                                    <span class="description">@x.Konu - @x.Tarih.ToShortDateString()</span>
+
+                                                </div>
+
+                                                <!-- /.user-block -->
+
+                                                <p>@x.Icerik</p>
+
+                                                <p>
+
+                                                    <a href="/Admin/YeniMesaj/" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Yanıtla</a>
+
+
+
+                                                </p>
+
+                                                <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
+
+                                            </div>
+                                        }
+                                    </div>
+
+                                    <!-- /.tab-pane -->
+
+                                    <div class="tab-pane" id="timeline">
+
+                                        <!-- The timeline -->
+
+                                        @Html.Action("PartialDuyuru", "Admin")
+
+                                    </div>
+
+                                    <!-- /.tab-pane -->
+
+                                    <div class="tab-pane" id="settings">
+
+                                        @Html.Action("PartialDuzenle", "Admin")
+
+                                    </div>
+
+                                    <!-- /.tab-pane -->
+
+                                </div>
+
+                                <!-- /.tab-content -->
+
+                            </div><!-- /.card-body -->
+
+                        </div>
+
+                        <!-- /.nav-tabs-custom -->
+
+                    </div>
+
+                    <!-- /.col -->
+
+                </div>
+
+                <!-- /.row -->
+
+            </div><!-- /.container-fluid -->
+
+        </section>
+
+        <!-- /.content -->
+
+    </div>
+
+    <div id="Modal1" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Popup Ekranı</h3>
+                    <button id="closePopup" class="close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- Popup içeriği buraya gelecek -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Yeni Duyuru</h3>
+                        </div>
+                        <form role="form">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Konu</label>
+                                    <input type="text" name="Konu" class="form-control" id="Konu" placeholder="Konu">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">İçerik</label>
+                                    <textarea id="Icerik" class="form-control" name="Icerik" style="height: 150px" placeholder="İçerik:"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Dosya Ekle</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="exampleInputFile">
+                                            <label class="custom-file-label" for="exampleInputFile">Dosya Seç</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="">Upload</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /Popup içeriği -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap 4 -->
+
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AdminLTE App -->
+
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+
+    <!-- AdminLTE for demo purposes -->
+
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+
+    <!-- JavaScript kodu -->
+    <script>
+        $(document).ready(function () {
+            $('#Modal1 form').submit(function (e) {
+                e.preventDefault(); // Formun normal submit işlemini engelliyoruz
+                var formData = {
+                    Konu: $('#Konu').val(),
+                    Icerik: $('#Icerik').val()
+                };
+
+                $.ajax({
+                    type: 'POST', // Veri göndermek için POST metodu kullanılacak
+                    url: '/Admin/YeniDuyuru', // Verilerin gönderileceği Controller ve Action belirtiliyor
+                    data: formData, // Gönderilecek veriler
+                    success: function (response) {
+                        // Başarılı sonuç alındığında yapılacak işlemler
+                        // alert(response.message);
+                        $('#Modal1').modal('hide');
+                        // Sayfayı yeniden yüklemek için:
+                        window.location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                        // Hata durumunda yapılacak işlemler
+                        console.error(xhr.responseText);
+                        // Hata mesajını kullanıcıya gösterebilirsiniz
+                        alert('Bir hata oluştu: ' + xhr.responseText);
+                    }
+                });
+            });
+        });
+
+        document.getElementById('yeniDuyuruLink').addEventListener('click', function () {
+            document.getElementById('Modal1').style.display = 'block';
+        });
+
+        document.getElementById('closePopup').addEventListener('click', function () {
+            document.getElementById('Modal1').style.display = 'none';
+        });
+    </script>
+
+
+
+</body>
+
+</html>

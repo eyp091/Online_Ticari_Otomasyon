@@ -1,0 +1,24 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Admin
+@{
+    ViewBag.Title = "AdminKayit";
+    Layout = "~/Views/Shared/_AminLayout.cshtml";
+}
+<div style="height: 100vh; display: flex; justify-content: center; align-items: center; background-color: #f2f2f2;">
+    <div style="width: 50%; background-color: #ffffff; padding: 20px; border: 1px solid #cccccc;">
+        <h2 style="text-align: center;">Yeni Admin Ekle</h2>
+        <form class="form-group" method="post">
+            @Html.LabelFor(x => x.KullaniciAdi)
+            @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-control" })
+            <br />
+            @Html.LabelFor(x => x.Sifre)
+            @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })
+            <br />
+            @Html.LabelFor(x => x.Yetki)
+            @Html.TextBoxFor(x => x.Yetki, new { @class = "form-control" })
+            <br />
+            <button class="btn btn-info" style="display: block; margin: 0 auto;">Kaydet</button>
+        </form>
+    </div>
+</div>
+
+
