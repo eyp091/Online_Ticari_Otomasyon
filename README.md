@@ -44,3 +44,37 @@ Proje kapsamında kullanılan teknolojiler.
 📌 Chart
 
 📌 Widget Cards kullanımları
+
+## Login Paneli
+
+![295d43a7-10c2-4f23-9990-52fbe220d497](https://github.com/eyp091/Online_Ticari_Otomasyon/blob/main/video/login1.png)
+
+## Admin Paneli
+
+![295d43a7-10c2-4f23-9990-52fbe220d497](https://github.com/eyp091/Online_Ticari_Otomasyon/blob/main/video/admin1.png)
+
+![295d43a7-10c2-4f23-9990-52fbe220d497](https://github.com/eyp091/Online_Ticari_Otomasyon/blob/main/video/admin2.png)
+
+![295d43a7-10c2-4f23-9990-52fbe220d497](https://github.com/eyp091/Online_Ticari_Otomasyon/blob/main/video/admin3.png)
+
+![295d43a7-10c2-4f23-9990-52fbe220d497](https://github.com/eyp091/Online_Ticari_Otomasyon/blob/main/video/admin4.png)
+
+![295d43a7-10c2-4f23-9990-52fbe220d497](https://github.com/eyp091/Online_Ticari_Otomasyon/blob/main/video/admin5.png)
+
+![295d43a7-10c2-4f23-9990-52fbe220d497](https://github.com/eyp091/Online_Ticari_Otomasyon/blob/main/video/admin6.png)
+
+![295d43a7-10c2-4f23-9990-52fbe220d497](https://github.com/eyp091/Online_Ticari_Otomasyon/blob/main/video/admin7.png)
+
+![295d43a7-10c2-4f23-9990-52fbe220d497](https://github.com/eyp091/Online_Ticari_Otomasyon/blob/main/video/admin8.png)
+
+## Müşteri Paneli
+
+![295d43a7-10c2-4f23-9990-52fbe220d497](https://github.com/eyp091/Online_Ticari_Otomasyon/blob/main/video/cari1.png)
+
+![295d43a7-10c2-4f23-9990-52fbe220d497](https://github.com/eyp091/Online_Ticari_Otomasyon/blob/main/video/cari2.png)
+
+![295d43a7-10c2-4f23-9990-52fbe220d497](https://github.com/eyp091/Online_Ticari_Otomasyon/blob/main/video/cari3.png)
+
+![295d43a7-10c2-4f23-9990-52fbe220d497](https://github.com/eyp091/Online_Ticari_Otomasyon/blob/main/video/cari4.png)
+
+![295d43a7-10c2-4f23-9990-52fbe220d497](https://github.com/eyp091/Online_Ticari_Otomasyon/blob/main/video/cari5.png)
